@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    environment:
+
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: oSaka_2019
+      POSTGRES_DB: campers
+    ports:
+      - "5437:5432"
+    volumes:
+     # - $HOME/Desktop/PostgreSql-Snippets/infile:/infile
+      - /Users/alexander/pythonProject/flaskProject32/PostgreSql-Snippets/infile:/infile
+      - pg_data:/var/lib/postgresql/data/
+volumes:
+  pg_data:
+
+
+  app:
+    restart: always
+    build: .
+    ports:
+    - "5000:5000"
+    volumes:
+    - /usr/src/app/
+
+    depends_on:
+      - postgres
+
+
+
+

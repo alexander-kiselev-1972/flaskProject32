@@ -25,8 +25,10 @@ class LeaveMessage(FlaskForm):
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-class price_form(FlaskForm):
+class PriceForm(FlaskForm):
     heater = RadioField('Heater', validators=[DataRequired()])
+    solar_panel = RadioField('Solar panel', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 
 

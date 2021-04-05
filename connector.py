@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import sqlite3
 import psycopg2
-from config import config_postgres
+#from config import config_postgres
+import os
 
 sql = '(select * from user); (select * from messages);'
 
@@ -39,4 +40,4 @@ def connect():
 
 
 if __name__ == '__main__':
-    connect()
+    print(os.getcwd())

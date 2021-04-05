@@ -1,5 +1,5 @@
 {% extends "caravan/base.html" %}
-{% from "caravan/macros.html" import owner %}
+{#{% from "caravan/macros.html" import owner %}#}
 {#{% import "bootstrap/wtf.html" as wtf %}#}
 {#{% block forma %}#}
 {##}
@@ -25,19 +25,19 @@
                     <div class="row my-form">
                         <div class="display-error"><span id="error"></span></div>
                         <div class="col-12 col-md-6">
-                            <label for="candidate_fname"></label><input type="text" class="form-control" id="candidate_fname" placeholder="First Name" required="required" {{ form.first_name}}
+                             {{ form.first_name(type="text", class="form-control", id="candidate_fname", placeholder="First Name", required="required")}}
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="candidate_lname"></label><input type="text" class="form-control" id="candidate_lname" placeholder="Last Name" required="required" {{ form.last_name}}
+                             {{ form.last_name(type="text", class="form-control", id="candidate_lname", placeholder="Last Name", required="required")}}
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="user_email"></label><input type="email" class="form-control" id="user_email" placeholder="Email" required="required" {{ form.email}}
+                           {{ form.email(type="email", class="form-control", id="user_email", placeholder="Email", required="required")}}
                         </div>
                         <div class="col-12 col-md-6">
-                            <label for="user_subject"></label><input type="text" class="form-control" id="user_subject" placeholder="Subject" required="required" {{ form.subject}}
+                            {{ form.subject(type="text", class="form-control", id="user_subject", placeholder="Subject", required="required")}}
                         </div>
                         <div class="col-12">
-                            <label for="user_message"></label><textarea class="form-control" id="user_message" placeholder="Message" rows="7" required="required" {{ form.message}}</textarea>
+                            {{ form.message(class="form-control", id="user_message", placeholder="Message", rows="7", required="required")}}
                         </div>
                         <div class="col-12">
                             <button class="btn anim-btn rounded-pill user-contact" type="submit">SUBMIT

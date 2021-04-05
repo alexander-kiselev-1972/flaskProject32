@@ -499,6 +499,9 @@ class ModelSetings(db.Model):
     __tablename__='model_setings'
     model_setings_id = db.Column(db.Integer, primary_key=True)
 
+    model_id = db.Column(db.Integer, db.ForeignKey('models.models_id'))
+    model = db.relationship('Models', backref='model_order')
+
     heater_id = db.Column(db.Integer, db.ForeignKey('heater.heater_id'))
     heater = db.relationship('Heater', backref='heater')
 
@@ -567,19 +570,19 @@ class ModelSetings(db.Model):
 
 
 #заказ
-# class Orders(db.Model):
-#     __tablename__='orders'
-#     order_id = db.Column(db.Integer, primary_key=True)
-#
-#     model_id = db.Column(db.Integer, db.ForeignKey('models.models_id'))
-#     model = db.relationship('Models', backref='model_order')
-#
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#     user = db.relationship('User', backref='user')
-#
-#
-#     def __repr__(self):
-#         return self.model_id
+class Orders(db.Model):
+    __tablename__='orders'
+    order_id = db.Column(db.Integer, primary_key=True)
+
+    model_settings_id = db.Column(db.Integer, db.ForeignKey('model_setings.model_setings_id'))
+    model_settings = db.relationship('ModelSetings', backref='model_setings')
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='user')
+
+
+    def __repr__(self):
+        return self.model_id
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% from "caravan/macros.html" import rad %}
+{#{% from "caravan/macros.html" import rad %}#}
 
 {% block en %}
 <html lang="en">
@@ -533,7 +533,7 @@
                         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"><p>Все</p></div>
                         <div data-filter=".veles" class="cbp-filter-item"><p>VELES</p></div>
                         <div data-filter=".yenisei" class="cbp-filter-item"><p>YENISEI</p></div>
-                        <div data-filter=".ural" class="cbp-filter-item"><p>{{ rad(own) }}</p></div>
+                        <div data-filter=".ural" class="cbp-filter-item"><p>URAL</p></div>
                         <div data-filter=".additions" class="cbp-filter-item"><p>Дополнения</p></div>
                     </div>
 
@@ -1129,22 +1129,22 @@
                         <span class="fly-text">КОНТАКТЫ</span>
                     </div>
                     <p class="small-text text-center text-md-left">
-                        {{ own[0].text }}
+{#                        {{ own[0].text }}#}
                     </p>
                     <div class="row location-details text-center text-md-left">
                         <div class="col-12 col-md-6 addr-list">
                             <h4 class="heading-text">Slovensko</h4>
                             <ul>
+{##}
+{#                                    <i class="las la-mobile-alt"></i><a href="tel:{{ own[0].phone1 }}">{{ own[0].phone1 }}</a><br>#}
+{#                                    <i class="las la-envelope"></i><a href="mailto:{{ own[0].email1 }}">{{  own[0].email1 }}</a><br>#}
+{#                                    <i class="las la-map-marker"></i><a href="https://goo.gl/maps/xb8JJ222PDdaWmhP7">{{ own[0].ulica_dom}} <br>{{ own[0].index }}<br> Žiar nad Hronom</a>#}
 
-                                    <i class="las la-mobile-alt"></i><a href="tel:{{ own[0].phone1 }}">{{ own[0].phone1 }}</a><br>
-                                    <i class="las la-envelope"></i><a href="mailto:{{ own[0].email1 }}">{{  own[0].email1 }}</a><br>
-                                    <i class="las la-map-marker"></i><a href="https://goo.gl/maps/xb8JJ222PDdaWmhP7">{{ own[0].ulica_dom}} <br>{{ own[0].index }}<br> Žiar nad Hronom</a>
 
 
-
-{#                                <li><i class="las la-mobile-alt"></i><a href="tel:+421-950-764-554">+421 950 764 554</a></li>#}
-{#                                <li><i class="las la-envelope"></i><a href="mailto:karavan@deilmann.sk">karavan@deilmann.sk</a></li>#}
-{#                                <li><i class="las la-map-marker"></i><a href="https://goo.gl/maps/xb8JJ222PDdaWmhP7">Medzi vodami 216/6, <br>965 01 Žiar nad Hronom</a></li>#}
+                                <li><i class="las la-mobile-alt"></i><a href="tel:+421-950-764-554">+421 950 764 554</a></li>
+                                <li><i class="las la-envelope"></i><a href="mailto:karavan@deilmann.sk">karavan@deilmann.sk</a></li>
+                                <li><i class="las la-map-marker"></i><a href="https://goo.gl/maps/xb8JJ222PDdaWmhP7">Medzi vodami 216/6, <br>965 01 Žiar nad Hronom</a></li>
 
                             </ul>
                         </div>

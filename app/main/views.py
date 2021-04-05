@@ -3,7 +3,7 @@ from . import main
 from ..email import send_email, send_email2
 from ..models import User, Menu, Owner, Messages, Models
 from app import db
-from .forms import NameForm, Menu_create, LeaveMessage
+from .forms import NameForm, Menu_create, LeaveMessage, PriceForm
 from sqlalchemy.exc import IntegrityError
 import json
 import time
@@ -79,12 +79,16 @@ def menu_create():
 #     owners_data = Owner.query.all()
 #     return render_template("caravan/macros.html", own=owners_data)
 
-@main.route('/', methods=['GET', 'POST'])
-def index():
-    own = Owner.query.all()
-    models = Models.query.all()
-    form = LeaveMessage()
+def pre_order(a):
+    form = PriceForm()
+    if form.validate_on_submit():
+        heater = form.heater.data
+        solar_panel = form.solar_panel.data
 
+
+def FormFooter(a):
+
+    form = a
     if form.validate_on_submit():
 
         user_email = User.query.filter_by(email=form.email.data).first()
@@ -99,7 +103,8 @@ def index():
             db.session.commit()
 
             send_email('deilmann.sro@gmail.com', 'Confirm Your Account',
-                   'mail/new_user', user=form.first_name.data, email=form.email.data, user_subject=form.subject.data, user_message=form.message.data )
+                       'mail/new_user', user=form.first_name.data, email=form.email.data,
+                       user_subject=form.subject.data, user_message=form.message.data)
             flash("your messeges for as send to email")
             form.first_name.data = ''
             form.last_name.data = ''
@@ -125,7 +130,8 @@ def index():
             db.session.commit()
 
             send_email('deilmann.sro@gmail.com', 'Confirm Your Account',
-                       'mail/new_user', user=form.first_name.data, user_subject=form.subject.data, user_message=form.message.data)
+                       'mail/new_user', user=form.first_name.data, user_subject=form.subject.data,
+                       user_message=form.message.data)
             flash("your messeges for as send to email")
             form.first_name.data = ''
             form.last_name.data = ''
@@ -133,6 +139,15 @@ def index():
             form.subject.data = ''
             form.message.data = ''
             return redirect(url_for('main.index'))
+
+
+
+@main.route('/', methods=['GET', 'POST'])
+def index():
+    own = Owner.query.all()
+    models = Models.query.all()
+    form = LeaveMessage()
+    FormFooter(form)
 
     return render_template('caravan/index.html', form=form, own=own, models=models)
 
